@@ -40,19 +40,18 @@ public class CountSubstrings {
       return 1;
     }
 
-    List<String> values = new ArrayList<>();
+    Set<String> values = new HashSet<>();
 
     int size = 1;
     while (size <= s.length()) {
       for (int i = x; i + size < y + 2; i++) {
-     //   if (i + size <= s.length()) {
-          if (!values.contains(s.substring(i, i + size))) {
-            values.add(s.substring(i, i + size));
-    //      }
-        }
+        //   if (i + size <= s.length()) {
+        values.add(s.substring(i, i + size));
       }
-
-      size++;
+      if (values.size() == 1 && size == 1){
+        return y-x;
+      }
+        size++;
     }
     System.out.println(values);
     return values.size();
