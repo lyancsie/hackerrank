@@ -5,55 +5,55 @@ import java.util.*;
 public class CountSubstrings {
 
   public static void main(String[] args) {
-    System.out.println(countSubString("abcdabs", 0, 5));
-    System.out.println("TEST: " + countSubString("aabaacccc", 1, 4));
-
-    int[] a = countSubstrings("aabaa", new int[][]{{1, 1}, {1, 4}, {1, 1}, {1, 4}, {0, 2}});
-    //   int[] b = countSubstrings("qqqqqqqqqqzrzrrzrzrrzrrzrzrrzrzrrzttttttttttttttttttttttttttttttttttttttttttttttttttttttqncpqzcxpbwa\n", new int[][]{{61, 97}, {15, 50}, {68, 89}});
-
-    for (int i = 0; i < a.length; i++) {
-      System.out.println(a[i]);
+    //TODO: check the size of the string
+    //divide into smaller sections
+    //count how many individual characters the divided sections have
+    //TODO: calculate the formmulae to 2,3,4,5 individual characters on paper
+    //if number > 5, collect all substrings, else just add the result to the number and move on
+    String a = "aafsksste95eerwr4434444444444444wjreijreijei5iej5ieuier55i5iiiiririiiriiriii3i3i4i34i34i34i3i43afsksste95eerwr4434444444444444wjreijreijei5iej5ieuier55i5iiiiririiiriiriii3i3i4i34i34i34i3i43afsksste95eerwr4434444444444444wjreijreijei5iej5ieuier55i5iiiiririiiriiriii3i3i4i34i34i34i3i43afsksste95eerwr4434444444444444wjreijreijei5iej5ieuier55i5iiiiririiiriiriii3i3i4i34i34i34i3i43afsksste95eerwr4434444444444444wjreijreijei5iej5ieuier55i5iiiiririiiriiriii3i3i4i34i34i34i3i43afsksste95eerwr4434444444444444wjreijreijei5iej5ieuier55i5iiiiririiiriiriii3i3i4i34i34i34i3i43afsksste95eerwr4434444444444444wjreijreijei5iej5ieuier55i5iiiiririiiriiriii3i3i4i34i34i34i3i43afsksste95eerwr4434444444444444wjreijreijei5iej5ieuier55i5iiiiririiiriiriii3i3i4i34i34i34i3i43afsksste95eerwr4434444444444444wjreijreijei5iej5ieuier55i5iiiiririiiriiriii3i3i4i34i34i34i3i43afsksste95eerwr4434444444444444wjreijreijei5iej5ieuier55i5iiiiririiiriiriii3i3i4i34i34i34i3i43afsksste95eerwr4434444444444444wjreijreijei5iej5ieuier55i5iiiiririiiriiriii3i3i4i34i34i34i3i43afsksste95eerwr4434444444444444wjreijreijei5iej5ieuier55i5iiiiririiiriiriii3i3i4i34i34i34i3i43fsksste95eerwr4434444444444444wjreijreijei5iej5ieuier55i5iiiiririiiriiriii3i3i4i34i34i34i3i43";
+    String x[] = divide(a, a.length() / 10);
+    int counter = 0;
+    for (int i = 0; i < x.length; i++) {
+      //countSubstrings(5);
     }
-    System.out.println();
 
-/*    for (int i = 0; i < b.length; i++) {
-      System.out.println(b[i]);
-    }*/
+    System.out.println("abcdabcdabcdeeee".length());
+    for (String aX : x) {
+      System.out.println(aX);
+    }
+  }
+
+  static boolean isLong(String s, long limit) {
+    return s.length() > limit;
+  }
+
+  static int individualCharacters(String s) {
+    Set<Character> set = new HashSet<>();
+    for (int i = 0; i < s.length(); i++) {
+      set.add(s.charAt(i));
+    }
+    return set.size();
+  }
+
+  static String[] divide(String s, int n) {
+    String[] divided = new String[n];
+    int length = s.length() / n + 1;
+    for (int i = 0; i < n; i++) {
+      String x;
+      if (i != n - 1) {
+        divided[i] = s.substring(s.length() * i / n, s.length() * i / n + length - 1);
+      } else {
+        divided[i] = s.substring(s.length() * i / n);
+      }
+    }
+    return divided;
   }
 
   static int[] countSubstrings(String s, int[][] queries) {
-    List<Integer> answers = new ArrayList<>();
-    for (int i = 0; i < queries.length; i++) {
-      //System.out.print(queries[i][0] + ";" + queries[i][1]);
-      answers.add(countSubString(s, queries[i][0], queries[i][1]));
-    }
-    int[] answersArr = new int[answers.size()];
-    for (int i = 0; i < answers.size(); i++) {
-      answersArr[i] = answers.get(i);
-    }
 
-    return answersArr;
-  }
-
-  static int countSubString(String s, int x, int y) {
-    if (x == y) {
-      return 1;
+    if (s.length() > 100) {
+      String[] divided = divide(s, 100);
     }
-
-    Set<String> values = new HashSet<>();
-
-    int size = 1;
-    while (size <= s.length()) {
-      for (int i = x; i + size < y + 2; i++) {
-        //   if (i + size <= s.length()) {
-        values.add(s.substring(i, i + size));
-      }
-      if (values.size() == 1 && size == 1){
-        return y-x;
-      }
-        size++;
-    }
-    System.out.println(values);
-    return values.size();
+    return new int[]{0};
   }
 }

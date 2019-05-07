@@ -2,7 +2,7 @@ package interview;
 
 public class ArrayFiller {
 
-  public static void main(String[] args) {
+  public static void main(String[] args) throws CloneNotSupportedException, Exception {
     int[][] myIntArray = new int[52636][99];
     for (int i = 0; i < myIntArray.length; i++) {
       for (int j = 0; j < myIntArray[j].length; j++) {
@@ -18,4 +18,3 @@ public class ArrayFiller {
     }
   }
 }
-
