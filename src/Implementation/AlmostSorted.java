@@ -5,7 +5,7 @@ import java.util.*;
 import java.util.concurrent.ExecutionException;
 
 public class AlmostSorted {
-
+  
   public static void main(String[] args) throws Exception {
     System.out.println(isSwappable(new int[]{5, 2, 3, 4, 1}));
     int[] arr = new int[]{1, 2};
